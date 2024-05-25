@@ -27,8 +27,7 @@
      </select>
  	
      <update id="update">
-	 	update student set id =#{id}, passwd =#{passwd}, username =#{username}, 
-			snum =#{snum}, depart =#{depart}, mobile =#{mobile}, email =#{email} 
+	 	update student set id =#{id}, passwd =#{passwd}, nickname =#{nickname}, email =#{email}
 		 where id = #{id}
     </update>
  

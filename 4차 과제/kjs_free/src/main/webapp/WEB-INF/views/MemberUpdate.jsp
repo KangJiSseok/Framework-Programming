@@ -16,7 +16,7 @@
 		
 		<div class="mx-6">
 			<div class="card mb-4">
-			<form class="m-5" action="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=update" method="post">
+			<form class="m-5" action="/member/update" method="post">
 				<fieldset>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 						<li class="fw-bolder">ID<br><input class="form-control" type="text" name="id" readonly value="${ member.id }"></li><br>

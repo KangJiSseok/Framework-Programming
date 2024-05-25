@@ -17,9 +17,9 @@
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<c:if test="${sessionScope.id!=null}">
 					<li class="nav-item"><a class="nav-link active">${sessionScope.id}님</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=logout">로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
 					</c:if>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/Home.jsp">홈으로</a></li>
+					<li class="nav-item"><a class="nav-link" href="/member/Home">홈으로</a></li>
 				</ul>
 			</div>
 		</div>
@@ -43,8 +43,8 @@
 			</table>
 		</div>
 		<br>
-		<a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=update" target="_self"> 수정 </a>
-		<a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=delete" target="_self"> 회원탈퇴 </a>
+		<a class="badge bg-secondary text-decoration-none link-light" href="/member/update" target="_self"> 수정 </a>
+		<a class="badge bg-secondary text-decoration-none link-light" href="/member/delete" target="_self"> 회원탈퇴 </a>
 	</div>
 	
 </body>
