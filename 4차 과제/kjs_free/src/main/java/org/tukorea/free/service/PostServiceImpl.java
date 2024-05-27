@@ -39,6 +39,7 @@ public class PostServiceImpl implements PostService{
         return postDAO.MyPostList(memId);
     }
 
+    @Transactional
     @Override
     public void postUpdate(PostVO post) throws Exception {
         logger.info("post = {}", post.toString());
