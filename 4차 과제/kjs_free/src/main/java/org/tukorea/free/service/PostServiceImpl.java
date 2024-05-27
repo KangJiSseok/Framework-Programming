@@ -33,4 +33,17 @@ public class PostServiceImpl implements PostService{
     public PostVO read(String postNum) throws Exception {
         return postDAO.read(postNum);
     }
+
+    @Override
+    public List<PostVO> MyPostList(String memId) throws Exception {
+        return postDAO.MyPostList(memId);
+    }
+
+    @Override
+    public void postUpdate(PostVO post) throws Exception {
+        logger.info("post = {}", post.toString());
+        postDAO.postUpdate(post);
+    }
+
+
 }

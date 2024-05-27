@@ -24,7 +24,7 @@
 					<li class="nav-item"><a class="nav-link active" href="/member/myAccount">${sessionScope.id}님</a></li>
 					<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
 					<li class="nav-item"><a class="nav-link" href="/post/newPost">새 글 작성</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=myPost">내 포스트</a></li>
+					<li class="nav-item"><a class="nav-link" href="/post/myPost">내 포스트</a></li>
 					</c:if>
 				</ul>
 			</div>

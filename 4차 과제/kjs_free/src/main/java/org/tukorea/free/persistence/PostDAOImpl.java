@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.tukorea.free.domain.PostVO;
-import org.tukorea.free.domain.StudentVO;
 import org.tukorea.free.dto.PostDTO;
-import org.tukorea.free.service.PostServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,6 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public void add(PostDTO dto) throws Exception {
-        logger.info("dao dto = {}", dto.toString());
         sqlSession.insert(namespace + ".postInsert", dto);
     }
 
@@ -38,8 +35,21 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public PostVO read(String postNum) throws Exception {
-        logger.info("dao postNum = {}", postNum);
         PostVO vo = sqlSession.selectOne(namespace+".postSelectByid", postNum);
         return vo;
     }
+
+    @Override
+    public List<PostVO> MyPostList(String memId) throws Exception {
+        List<PostVO> myPostList = new ArrayList<>();
+        myPostList = sqlSession.selectList(namespace + ".myPostList", memId);
+        return myPostList;
+    }
+
+    @Override
+    public void postUpdate(PostVO post) throws Exception {
+        sqlSession.update(namespace + ".postUpdate", post);
+    }
+
+
 }

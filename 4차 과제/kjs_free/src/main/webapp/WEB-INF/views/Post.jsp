@@ -35,7 +35,7 @@
 			<h1 class="fw-bolder mb-1">${ post.post_title }</h1><br>
 			<div class="text-muted fst-italic mb-2">작성자 : ${ nick } | 포스팅날짜 : ${ post.post_uploadtime }</div>
 			<c:if test="${ sessionScope.id eq post.mem_id }">
-			<a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=update&post_num=${ post.post_num }" target="_self"> 수정 </a>
+			<a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8080/post/postUpdate?post_num=${ post.post_num }" target="_self"> 수정 </a>
 			<a class="badge bg-secondary text-decoration-none link-light" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=delete&post_num=${ post.post_num }" > 삭제 </a>
 			</c:if>
 		</header>

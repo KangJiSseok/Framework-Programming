@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/styles.css">
+<link rel="stylesheet" href="../resources/styles.css">
 <meta charset="UTF-8">
 <title>MyPost</title>
 </head>
@@ -16,11 +16,11 @@
 			<div class="navbar-collapse collapse show">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<c:if test="${sessionScope.id!=null}">
-					<li class="nav-item"><a class="nav-link active" href="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=myAccount">${sessionScope.id}님</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/MemberServlet?cmd=logout">로그아웃</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/member/myAccount">${sessionScope.id}님</a></li>
+					<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
 					</c:if>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=newPost">새 글 작성</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/Home.jsp">홈으로</a></li>
+					<li class="nav-item"><a class="nav-link" href="/post/newPost">새 글 작성</a></li>
+					<li class="nav-item"><a class="nav-link" href="/member/Home">홈으로</a></li>
 				</ul>
 			</div>
 		</div>

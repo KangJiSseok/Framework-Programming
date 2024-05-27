@@ -23,7 +23,7 @@
 					<li class="nav-item"><a class="nav-link active">${sessionScope.id}님</a></li>
 					<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
 					</c:if>
-					<li class="nav-item"><a class="nav-link" href="/member/Home">홈으로</a></li>
+					<li class="nav-item"><a class="nav-link" href="/member/	Home">홈으로</a></li>
 				</ul>
 			</div>
 		</div>

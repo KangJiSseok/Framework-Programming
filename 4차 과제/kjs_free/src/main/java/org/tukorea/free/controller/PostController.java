@@ -11,8 +11,8 @@ import org.tukorea.free.dto.PostDTO;
 import org.tukorea.free.service.MemberService;
 import org.tukorea.free.service.PostService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -29,7 +29,7 @@ public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     @GetMapping(value = "/newPost")
-    public String newPostPage(){
+    public String newPostPage() {
         return "/NewPost";
     }
 
@@ -39,11 +39,7 @@ public class PostController {
 
         PostDTO postDTO = new PostDTO(request.getSession().getAttribute("id").toString(), vo.getPost_title(), vo.getPost_content());
         postService.add(postDTO);
-        logger.info("저장완료");
-
         List<PostVO> postList = postService.postList();
-        logger.info("postList = {}", postList.get(0).toString());
-
         model.addAttribute("postlist", postList);
 
         return "/Home";
@@ -58,6 +54,39 @@ public class PostController {
         model.addAttribute("nick", nick);
 
         return "/Post";
+    }
 
+    @GetMapping(value = "/myPost")
+    public String myPost(Model model, HttpServletRequest request) throws Exception {
+
+        HttpSession session = request.getSession();
+        if (session.getAttribute("id") != null) {
+            model.addAttribute("mypostlist", postService.MyPostList(session.getAttribute("id").toString()));
+            return "/MyPost";
+        } else {
+            return "redirect:/member/Home";
+        }
+    }
+
+
+    @GetMapping(value = "/postUpdate")
+    public String postUpdatePage(Model model, @RequestParam("post_num") String postNum) throws Exception {
+        PostVO post = postService.read(postNum);
+        model.addAttribute("post", post);
+        return "/PostUpdate";
+    }
+
+    @PostMapping(value = "/postUpdate")
+    public String postUpdate(Model model, @ModelAttribute PostVO vo) throws Exception {
+        postService.postUpdate(vo);
+
+        PostVO post = postService.read(String.valueOf(vo.getPost_num()));
+        String nick = memberService.readMember(post.getMem_id()).getNickname();
+
+        model.addAttribute("greetings", "수정 완료");
+        model.addAttribute("post", post);
+        model.addAttribute("nick", nick);
+
+        return "/Post";
     }
 }

@@ -11,8 +11,6 @@ import org.tukorea.free.domain.StudentVO;
 import org.tukorea.free.service.MemberService;
 import org.tukorea.free.service.PostService;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;

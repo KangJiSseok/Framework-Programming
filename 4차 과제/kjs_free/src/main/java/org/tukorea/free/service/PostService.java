@@ -12,4 +12,9 @@ public interface PostService {
     public List<PostVO> postList() throws Exception;
 
     public PostVO read(String postNum) throws Exception;
+
+
+    public List<PostVO> MyPostList(String memId) throws Exception;
+
+    public void postUpdate(PostVO post) throws Exception;
 }
