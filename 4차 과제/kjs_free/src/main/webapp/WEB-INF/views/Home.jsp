@@ -19,18 +19,18 @@
 					<li class="nav-item"><a class="nav-link" href="/member/login">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="/member/register">회원가입</a></li>
 					</c:if>
-					
+
 					<c:if test="${sessionScope.id!=null}">
 					<li class="nav-item"><a class="nav-link active" href="/member/myAccount">${sessionScope.id}님</a></li>
 					<li class="nav-item"><a class="nav-link" href="/member/logout">로그아웃</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=newPost">새 글 작성</a></li>
+					<li class="nav-item"><a class="nav-link" href="/post/newPost">새 글 작성</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=myPost">내 포스트</a></li>
 					</c:if>
 				</ul>
 			</div>
 		</div>
 	</nav>
-<!--header-->	
+<!--header-->
 	<header class="py-5 bg-light border-bottom mb-4">
 		<div class="container">
 			<div class="text-center my-5">
@@ -44,7 +44,7 @@
 			<c:forEach var="post" items="${postlist}">
 				<div class="card mb-4">
 					<div class="card-body">
-						<c:url value ="http://localhost:8080/kangjinhyuk_free/PostServlet?cmd=post" var="target">
+						<c:url value ="http://localhost:8080/post/post" var="target">
 						<c:param name="post_num">${post.post_num}</c:param>
 						</c:url>
 						<a>${post.post_num}</a> | <a class="card-title h5" href="${target}">${post.post_title}</a>

@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.tukorea.free.domain.PostVO;
 import org.tukorea.free.domain.StudentVO;
 import org.tukorea.free.service.MemberService;
+import org.tukorea.free.service.PostService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -22,7 +24,8 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
-
+    @Autowired
+    private PostService postService;
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     //	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
@@ -75,7 +78,18 @@ public class MemberController {
     }
 
     @GetMapping("/Home")
-    public String home() {
+    public String home(Model model, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        String id = null;
+        if (session.getAttribute("id") != null) {
+            id = session.getAttribute("id").toString();
+        }
+        if(id == null){
+            return "/Home";
+        }else{
+            List<PostVO> postList = postService.postList();
+            model.addAttribute("postlist", postList);
+        }
         return "/Home";
     }
 
@@ -96,10 +110,8 @@ public class MemberController {
             HttpSession session = request.getSession();
             session.setAttribute("id", student.getId());
 
-            logger.info("forward");
-            return "/Home";
+            return "redirect:/member/Home";
         } else {
-            logger.info("redirect");
             return "redirect:/member/login";
         }
     }
@@ -115,8 +127,8 @@ public class MemberController {
 
     @GetMapping(value = "/logout")
     public String logout(HttpServletRequest request) {
+        logger.info("logout");
         HttpSession session = request.getSession(false);
-
         session.invalidate();
         return "redirect:/member/Home";
     }

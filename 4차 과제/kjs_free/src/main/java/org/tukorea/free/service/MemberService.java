@@ -1,7 +1,6 @@
 package org.tukorea.free.service;
 
 import org.tukorea.free.domain.StudentVO;
-import org.tukorea.free.dto.Message;
 
 import java.util.List;
 

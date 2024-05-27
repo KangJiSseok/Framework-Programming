@@ -3,7 +3,6 @@ package org.tukorea.free.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tukorea.free.domain.StudentVO;
-import org.tukorea.free.dto.Message;
 import org.tukorea.free.persistence.MemberDAO;
 
 import java.util.List;
