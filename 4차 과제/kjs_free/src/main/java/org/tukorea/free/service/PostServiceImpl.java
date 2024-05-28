@@ -25,16 +25,19 @@ public class PostServiceImpl implements PostService{
         postDAO.add(dto);
     }
 
+    @Transactional(readOnly = true)
     public List<PostVO> postList() throws Exception{
         return postDAO.postList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public PostVO read(String postNum) throws Exception {
         return postDAO.read(postNum);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<PostVO> MyPostList(String memId) throws Exception {
         return postDAO.MyPostList(memId);
     }
