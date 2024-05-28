@@ -51,5 +51,10 @@ public class PostDAOImpl implements PostDAO {
         sqlSession.update(namespace + ".postUpdate", post);
     }
 
+    @Override
+    public void postDelete(String post_num) throws Exception {
+        sqlSession.delete(namespace + ".postDelete", post_num);
+    }
+
 
 }

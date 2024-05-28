@@ -16,4 +16,6 @@ public interface PostDAO {
 	public List<PostVO> MyPostList(String memId) throws Exception;
 
 	public void postUpdate(PostVO post) throws Exception;
+
+	public void postDelete(String post_num) throws Exception;
 }

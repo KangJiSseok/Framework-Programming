@@ -48,5 +48,10 @@ public class PostServiceImpl implements PostService{
         postDAO.postUpdate(post);
     }
 
+    @Override
+    public void postDelete(String post_num) throws Exception {
+        postDAO.postDelete(post_num);
+    }
+
 
 }

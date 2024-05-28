@@ -89,4 +89,11 @@ public class PostController {
 
         return "/Post";
     }
+
+    @GetMapping(value = "/delete")
+    public String delete(@RequestParam("post_num") String post_num) throws Exception {
+        postService.postDelete(post_num);
+
+        return "redirect:/member/Home";
+    }
 }
