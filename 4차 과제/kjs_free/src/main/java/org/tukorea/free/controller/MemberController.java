@@ -141,23 +141,9 @@ public class MemberController {
     @GetMapping(value = "/delete")
     public String delete(HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession(false);
-
-
-        //session.removeAttribute("id");
         String strId = session.getAttribute("id").toString();
         memberService.deleteMember(strId);
         session.invalidate();
-//        PostDAO postdao = PostDAO.getInstance();
-//        ArrayList<PostVO> postList = postdao.getPostList();
-//        ServletContext context = getServletContext();
-//        context.setAttribute("postlist", postList);
         return "redirect:/member/Home";
-
     }
 }
-/*  MemberControllerAdvice에 예외처리 기능적용    
-    @ExceptionHandler(DataNotFoundException.class)
-    public String handleException(DataNotFoundException e) {
-        return "member/not_found";
-    }
-*/
