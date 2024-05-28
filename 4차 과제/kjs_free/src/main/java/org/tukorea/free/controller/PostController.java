@@ -1,8 +1,10 @@
 package org.tukorea.free.controller;
 
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +40,11 @@ public class PostController {
         logger.info("newPost");
 
         PostDTO postDTO = new PostDTO(request.getSession().getAttribute("id").toString(), vo.getPost_title(), vo.getPost_content());
-        postService.add(postDTO);
+        try {
+            postService.add(postDTO);
+        }catch (DataIntegrityViolationException e){
+            return "/error";
+        }
         List<PostVO> postList = postService.postList();
         model.addAttribute("postlist", postList);
 
