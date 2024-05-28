@@ -31,7 +31,6 @@ public class MemberController {
     public String listMember(Model model) throws Exception {
         List<StudentVO> students = memberService.readMemberList();
 
-        logger.info(" /member/list URL called. then listMemebr method executed.");
         model.addAttribute("students", students);
         return "member/member_list";
     }
@@ -40,7 +39,6 @@ public class MemberController {
     public String readMember(@RequestParam("id") String id, Model model) throws Exception {
         StudentVO student = memberService.readMember(id);
 
-        logger.info(" /read?id=? URL called. then readMemebr method executed.");
         model.addAttribute("student", student);
         return "member/member_read";
     }
@@ -50,7 +48,6 @@ public class MemberController {
     public String modifyMemberGet(@RequestParam("id") String id, Model model) throws Exception {
         StudentVO student = memberService.readMember(id);
 
-        logger.info(" /modify?id=? URL GET method called. then forward member_modify.jsp.");
         model.addAttribute("student", student);
         return "member/member_modify";
     }
@@ -58,8 +55,6 @@ public class MemberController {
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modifyMemberPost(@ModelAttribute("student") StudentVO vo) throws Exception {
         memberService.updateMember(vo);
-        logger.info(vo.toString());
-        logger.info(" /modify?id=? URL POST method called. then modifyMemberPost method executed.");
         return "redirect:/member/list";
     }
 
@@ -93,14 +88,11 @@ public class MemberController {
 
     @GetMapping(value = "/login")
     public String loginPage() {
-        logger.info("getLogin");
         return "/Login";
     }
 
     @PostMapping(value = "login")
     public String login(@ModelAttribute("student") StudentVO vo, HttpServletRequest request) throws Exception {
-        logger.info("PostLogin");
-        logger.info("student = {}", vo.toString());
 
         StudentVO student = memberService.login(vo.getId(), vo.getPasswd());
 
@@ -125,7 +117,6 @@ public class MemberController {
 
     @GetMapping(value = "/logout")
     public String logout(HttpServletRequest request) {
-        logger.info("logout");
         HttpSession session = request.getSession(false);
         session.invalidate();
         return "redirect:/member/Home";

@@ -22,7 +22,6 @@ public class RestApi {
     private static final Logger logger = LoggerFactory.getLogger(RestApi.class);
     @GetMapping(value = "/memberList")
     public String rest() throws Exception {
-        logger.info("rest");
 
         List<StudentVO> studentList = memberService.readMemberList();
         ObjectMapper mapper = new ObjectMapper();
