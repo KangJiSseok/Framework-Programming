@@ -1,9 +1,12 @@
 package org.tukorea.free.logtrace;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.tukorea.free.TraceId;
 import org.tukorea.free.TraceStatus;
+import org.tukorea.free.service.PostServiceImpl;
 
 @Slf4j
 @Component
@@ -13,13 +16,15 @@ public class ThreadLocalLogTrace{
     private static final String COMPLETE_PREFIX = "<--";
     private static final String EX_PREFIX = "<X-";
 
+
+    private static final Logger logger = LoggerFactory.getLogger(ThreadLocalLogTrace.class);
     private ThreadLocal<TraceId> traceIdHolder = new ThreadLocal<>();
 
     public TraceStatus begin(String message) {
         syncTraceId();
         TraceId traceId = traceIdHolder.get();
         Long startTimeMs = System.currentTimeMillis();
-        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
+        logger.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
 
         return new TraceStatus(traceId, startTimeMs, message);
     }

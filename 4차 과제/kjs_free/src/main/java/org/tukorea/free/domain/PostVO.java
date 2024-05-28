@@ -25,4 +25,44 @@ public class PostVO {
                 ", post_uploadtime=" + post_uploadtime +
                 '}';
     }
+
+    public int getPost_num() {
+        return post_num;
+    }
+
+    public void setPost_num(int post_num) {
+        this.post_num = post_num;
+    }
+
+    public String getMem_id() {
+        return mem_id;
+    }
+
+    public void setMem_id(String mem_id) {
+        this.mem_id = mem_id;
+    }
+
+    public String getPost_title() {
+        return post_title;
+    }
+
+    public void setPost_title(String post_title) {
+        this.post_title = post_title;
+    }
+
+    public String getPost_content() {
+        return post_content;
+    }
+
+    public void setPost_content(String post_content) {
+        this.post_content = post_content;
+    }
+
+    public Timestamp getPost_uploadtime() {
+        return post_uploadtime;
+    }
+
+    public void setPost_uploadtime(Timestamp post_uploadtime) {
+        this.post_uploadtime = post_uploadtime;
+    }
 }
