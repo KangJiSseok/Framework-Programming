@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.tukorea.free.mapper.postMapper">
+    <insert id="postInsert" parameterType="org.tukorea.free.dto.PostDTO">
+        INSERT INTO Post (mem_id, post_title, post_content)
+        VALUES (#{mem_id}, #{post_title}, #{post_content})
+    </insert>
+
+    <select id="postSelectAll" resultType="org.tukorea.free.domain.PostVO">
+     <![CDATA[
+        select * from Post
+        ]]>
+     </select>
+
+    <select id="postSelectByid" resultType="PostVO">
+        select * from Post where post_num = #{post_num}
+    </select>
+
+    <select id="myPostList" resultType="org.tukorea.free.domain.PostVO">
+        select * from Post where mem_id = #{memId}
+    </select>
+
+    <update id="postUpdate">
+        update Post set post_title =#{post_title}, post_content =#{post_content}
+        where post_num = #{post_num}
+    </update>
+
+    <delete id="postDelete">
+        delete from Post where post_num = #{post_num}
+    </delete>
+</mapper>
+
+
