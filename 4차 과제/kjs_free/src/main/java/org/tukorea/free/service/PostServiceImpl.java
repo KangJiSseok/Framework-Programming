@@ -21,7 +21,6 @@ public class PostServiceImpl implements PostService{
 
     @Transactional
     public void add(PostDTO dto) throws Exception {
-        logger.info("dto = {}", dto.toString());
         postDAO.add(dto);
     }
 
